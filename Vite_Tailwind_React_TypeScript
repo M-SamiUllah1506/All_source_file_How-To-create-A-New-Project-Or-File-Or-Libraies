@@ -1,0 +1,39 @@
+✅ 1. Create Vite + React + TypeScript project
+npm create vite@latest my-app --template react-ts
+cd my-app
+✅ 2. Install Tailwind CSS and dependencies
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+#############
+✅ 3. Configure tailwind.config.js
+Update the content array to include all relevant files:
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+############
+✅ 4. Add Tailwind directives to src/index.css
+Replace the content of src/index.css with:
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#########################
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
+import './index.css' // Tailwind styles
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
