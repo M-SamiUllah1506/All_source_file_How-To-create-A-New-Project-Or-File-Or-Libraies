@@ -1,0 +1,22 @@
+##For Start Of The File In vite React And Tailwind
+npx shadcn-ui@latest init
+
+## Just for Card
+npx shadcn-ui@latest add card
+
+import { Card, CardContent } from "@/components/ui/card"
+
+
+####✖ Validating import alias.
+##Always Add these In Your (tsconfig.json) For Config to Shadcd
+{
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+},
+
+///Yarn Reomve
+del yarn.lock
+## Yarn Install
+
+yarn install
