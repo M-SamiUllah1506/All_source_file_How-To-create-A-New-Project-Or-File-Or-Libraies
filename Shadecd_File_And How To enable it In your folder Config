@@ -20,3 +20,33 @@ del yarn.lock
 ## Yarn Install
 
 yarn install
+
+del yarn.lock
+
+###Yarn Error
+npx shadcn@latest init --no-install
+After Above Command Just Remove the Compnent.js and then 
+Run The Below Command..
+
+npx shadcn@latest init
+
+##Then Run That
+npm install -D vite-tsconfig-paths
+Then in vite.config.ts:
+
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
+
+export default defineConfig({
+  plugins: [react(), tsconfigPaths()],
+});
+
+
+#####
+Also Run That
+npx update-browserslist-db@latest
+
+############ IF you see Error BEcause of Prettier Then Run That Command
+npx prettier --write .
+
