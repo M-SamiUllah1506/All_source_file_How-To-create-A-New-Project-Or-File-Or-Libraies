@@ -1,0 +1,79 @@
+#####First we Hvae to install the Dom routerr Pakages
+React Router Dom Pakages
+npm install react-router dom
+##2
+Then We have to import that into our main.tsx file to get availabel it
+mport { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+<BrowserRouter>
+<App/>
+</BrowserRouter>
+##3
+Then we have to import inot our App or where we ant to use it 
+import {Routes, Route} from 'react-router-dom';
+
+##4 then we have to use <Routes> and Inisdes <Routes/> we hav to use The <Route Path='/Home eleemnt={<Home/>} /> 
+
+<Routes>
+        <Route path='/Home' element = {<Home/>}/>
+        <Route path='/About' element={<About/>}/>
+        <Route path ='/Product' element={<Product/>}/>
+        <Route path= '/Contant/' element={<Contant/>}/>
+      </Routes>
+##5 The we have to use link so when we click the link we go to home page or whatever
+import {Link} from 'react-router-dom' also import hta in file
+<Link to= ' /Home' >Home<link/>
+<Link to='/Home'><li className="hover:text-white cursor-pointer">Home</li></Link> 
+
+
+####################################################################################
+// App.jsx
+
+// 1. First install this in terminal
+// npm install react-router-dom
+
+// 2. Then import BrowserRouter in main.jsx like this:
+// import { BrowserRouter } from 'react-router-dom'
+// <BrowserRouter>
+//   <App />
+// </BrowserRouter>
+
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+// Pages
+const Home = () => <h1>Home Page</h1>;
+const About = () => <h1>About Page</h1>;
+const Product = () => <h1>Product Page</h1>;
+const Contact = () => <h1>Contact Page</h1>;
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      {/* Navbar Links */}
+      <nav className="bg-green-300 p-4 flex space-x-4">
+        <Link to="/home">
+          <li className="cursor-pointer hover:text-white">Home</li>
+        </Link>
+        <Link to="/product">
+          <li className="cursor-pointer hover:text-white">Product</li>
+        </Link>
+        <Link to="/about">
+          <li className="cursor-pointer hover:text-white">About</li>
+        </Link>
+        <Link to="/contact">
+          <li className="cursor-pointer hover:text-white">Contact</li>
+        </Link>
+      </nav>
+
+      {/* Routes */}
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
