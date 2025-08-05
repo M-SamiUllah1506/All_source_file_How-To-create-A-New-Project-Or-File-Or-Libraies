@@ -1,0 +1,5 @@
+If you're using VS Code, follow these steps:
+Go to Extensions (sidebar or press Ctrl+Shift+X)
+Search for: ES7+ React/Redux/React-Native snippets
+This extension enables useful shortcuts like:
+rafce → React Arrow Function Component with export
