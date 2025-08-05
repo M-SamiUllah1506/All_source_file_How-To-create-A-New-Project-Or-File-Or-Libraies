@@ -1,0 +1,8 @@
+###MUI File Compents Use in Your Project Folder
+npm install @mui/material @emotion/react @emotion/styled
+
+import Button from '@mui/material/Button'
+
+<Button variant="contained">Click Me</Button>
+
+/* prettier-ignore-file */
