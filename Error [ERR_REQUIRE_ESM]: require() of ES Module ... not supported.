@@ -1,0 +1,13 @@
+Error [ERR_REQUIRE_ESM]: require() of ES Module ... not supported.
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// Use dynamic import for ES module
+export default defineConfig(async () => {
+  const tsconfigPaths = await import('vite-tsconfig-paths')
+
+  return {
+    plugins: [react(), tsconfigPaths.default()]
+  }
+})
