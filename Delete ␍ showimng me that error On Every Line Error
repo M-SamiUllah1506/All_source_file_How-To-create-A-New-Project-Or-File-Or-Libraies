@@ -1,0 +1,12 @@
+Delete ␍ showimng me that error
+The ␍ character you're seeing is a Carriage Return character (\r), and it's usually a line-ending issue — especially if you're working on Windows.
+It likely means your file is using CRLF (Windows-style line endings), but some tools like Prettier, ESLint, or Git want LF (Unix-style).
+✅ Fix: Change Line Endings to LF (Unix-style)
+Open the file in VS Code.
+
+In the bottom-right corner, you'll see something like:
+CRLF
+Click on CRLF.
+A menu will pop up → Select LF.
+Save the file (Ctrl + S).
+This converts all line endings to LF, fixing the issue.
