@@ -1,0 +1,45 @@
+What is Redux?
+Redux is a library for managing data (state) that is shared across many components or the entire application.
+
+What is "State"?
+State is any data that can change and affects what the user sees on the screen. The video breaks it down into three types:
+
+Local State: Data used by only one component (e.g., text in an input field). Usually managed with React's useState hook.
+ sd s
+Cross-Component State: Data that affects a few components (e.g., a state for showing/hiding a pop-up modal).
+
+App-Wide State: Data that affects the whole app (e.g., user login status).
+
+How is State Managed?
+
+For local state, useState is enough.
+
+For cross-component and app-wide state, you can pass data and functions down through many components (called "prop drilling"), but this can get complicated.
+
+The Solution for Complex State:
+
+Both React Context (built into React) and Redux (a separate library) solve the problem of "prop drilling" by making it easier to share state across many components.
+
+Redux stores shared state and efficiently triggers updates only where they are needed.
+
+Here is a quick summary of the video's main points.
+
+This video explains the potential disadvantages of using React Context, which is why a tool like Redux can be a better choice in some situations.
+
+You Don't Always Need Redux: If the potential downsides of Context don't affect your project, you don't need Redux. You can also use both Redux and Context in the same application.
+
+Here are the two main disadvantages of React Context discussed:
+
+Complex Setup in Large Apps:
+
+For big applications, you might need to wrap your code in many different Context Providers, leading to deeply nested and messy JSX code.
+
+The alternative is creating one giant Context Provider to manage everything, but that component becomes very large and hard to maintain.
+
+Performance Issues:
+
+React Context is great for state that doesn't change often (like a website theme or login status).
+
+It is not well-optimized for "high-frequency" updates (state that changes very frequently), which can lead to performance problems.
+
+In conclusion, Redux is presented as an alternative that solves these specific issues of complexity and performance in large-scale applications.
