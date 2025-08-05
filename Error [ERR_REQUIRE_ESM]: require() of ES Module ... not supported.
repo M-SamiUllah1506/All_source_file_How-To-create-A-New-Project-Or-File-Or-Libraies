@@ -11,3 +11,27 @@ export default defineConfig(async () => {
     plugins: [react(), tsconfigPaths.default()]
   }
 })
+
+
+#####################
+npx prettier --write .
+npx eslint . --fix
+
+🔄 Optional: Also fix ESLint issues
+If you're using ESLint + Prettier together:
+
+bash
+Copy
+Edit
+npx eslint . --fix
+Make sure your ESLint config includes prettier in extends:
+
+js
+Copy
+Edit
+// .eslintrc.js or .eslintrc.json
+extends: [
+  "eslint:recommended",
+  "plugin:react/recommended",
+  "prettier"
+]
