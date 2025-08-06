@@ -1,11 +1,112 @@
+####################### Installing And Setting Envirmwent For Redux
+
+npm init -y
+
+ npm install redux
+
+
+✅ Step 1: Install Redux and React-Redux
+Open your terminal and run:
+
+npm install redux react-redux
+If you're using Redux Toolkit (recommended for modern Redux):
+
+npm install @reduxjs/toolkit react-redux
+
+
+////Store.ts File In A folder 
+import { configureStore } from "@reduxjs/toolkit";
+
+export const Store= configureStore({})
+
+
+
+store.ts (Redux Store)
+// src/app/store.ts
+import { configureStore } from '@reduxjs/toolkit'
+import counterReducer from '../features/counter/counterSlice'
+
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+})
+
+export type RootState = ReturnType<typeof store.g
+
+
+###################################
+counterSlice.ts
+// src/features/counter/counterSlice.ts
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+interface CounterState {
+  value: number
+}
+
+const initialState: CounterState = {
+  value: 0,
+}
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState,
+  reducers: {
+    increment: (state) => {
+      state.value += 1
+    },
+    decrement: (state) => {
+      state.value -= 1
+    },
+    incrementByAmount: (state, action: PayloadAction<number>) => {
+      state.value += action.payload
+    },
+  },
+})
+
+
+export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export default counterSlice.reducer
+
+
+
+
+
+#######################################################################################
+ 4. App.tsx
+// src/App.tsx
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState, AppDispatch } from './app/store'
+import { increment, decrement, incrementByAmount } from './features/counter/counterSlice'
+
+const App: React.FC = () => {
+  const count = useSelector((state: RootState) => state.counter.value)
+  const dispatch = useDispatch<AppDispatch>()
+
+  return (
+    <div className="text-center mt-10">
+      <h1 className="text-3xl mb-4">Counter: {count}</h1>
+      <button onClick={() => dispatch(increment())} className="px-4 py-2 bg-blue-500 text-white mx-1">+</button>
+      <button onClick={() => dispatch(decrement())} className="px-4 py-2 bg-red-500 text-white mx-1">-</button>
+      <button onClick={() => dispatch(incrementByAmount(5))} className="px-4 py-2 bg-green-500 text-white mx-1">+5</button>
+    </div>
+  )
+}
+
+export default App
+################################################################################################
+
+
+
 What is Redux?
 Redux is a library for managing data (state) that is shared across many components or the entire application.
 
 What is "State"?
-State is any data that can change and affects what the user sees on the screen. The video breaks it down into three types:
+State is any data that can change and affects what the user sees on the screen. 
 
 Local State: Data used by only one component (e.g., text in an input field). Usually managed with React's useState hook.
- sd s
+
 Cross-Component State: Data that affects a few components (e.g., a state for showing/hiding a pop-up modal).
 
 App-Wide State: Data that affects the whole app (e.g., user login status).
@@ -45,8 +146,24 @@ It is not well-optimized for "high-frequency" updates (state that changes very f
 In conclusion, Redux is presented as an alternative that solves these specific issues of complexity and performance in large-scale applications.
 
 ###########################################################################################################################################
-The Central Store
+main.tsx
 
+// src/main.tsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import { Provider } from 'react-redux'
+import { store } from './app/store'
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+)
+The Central Store
+###############################################################################################################
 Redux uses a single, central "store" to hold all of your application's shared state (like user login status, theme settings, etc.).
 
 Components can subscribe to this store to get the data they need. When the data changes, the store notifies these components so they can update.
@@ -57,7 +174,7 @@ A component never changes the data in the store directly.
 
 The Update Process (The Full Loop)
 
-Step 1: Action: When something happens (like a button click), the component dispatches an action. An action is just a simple JavaScript object that describes what should happen (e.g., { type: 'LOG_IN' }).
+Step 1: Action: When something happens (like a button click), the component dispatches(sending a message to the store to trigger a state update) an action. An action is just a simple JavaScript object that describes what should happen (e.g., { type: 'LOG_IN' }).
 
 Step 2: Reducer: Redux sends this action to a reducer function. The reducer is the only thing allowed to change the state. It takes the current state and the action, and produces a new state.
 
