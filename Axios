@@ -1,0 +1,24 @@
+Npm install axios
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+If you're using Axios in main.js, then at the top of that file, write:
+
+import axios from 'axios
+
+
+import axios from "axios";
+
+export function getTodos() {
+    axios({
+        method: 'get',
+        url: 'https://jsonplaceholder.typicode.com/posts',
+        params: {
+            _limit: 5 // limit set by that
+        }
+    })
+        .then(res => console.log(res.data))
+        .catch(err => console.error(err))
+}
